@@ -87,3 +87,11 @@ body {
 .form-group button.btn-sm {
     font-size: 11px;
 }
+
+.ui.input {
+    display: table-cell;
+}
+
+.margin-top-10 {
+    margin-top: 10px;
+}

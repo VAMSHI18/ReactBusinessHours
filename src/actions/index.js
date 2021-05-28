@@ -1,9 +1,12 @@
 // Action creators
 // import bhAPI from '../apis/bhRequest';
 import apis from '../apis/bhRequest';
-import axios from 'axios';
+import hours from '../data/hours.json';
 
 import _ from 'lodash';
+import {
+    v4 as uuidv4
+} from 'uuid';
 
 export const selectedBH = (bh, index) => {
     console.log('action executed!!');
@@ -88,4 +91,20 @@ export const resetHandler = (bhHours, bhClicked) => {
     type: "RESET_BH",
     payload: {bhHours: clonedBusinessHours, bhClicked: clonedBusinessHours[index], bhIndex: index}
   };
+};
+
+export const saveNewBH = (bhHours, name, tags=[]) => {
+    //generate busines hour object
+    let  newBHObject = {};
+    newBHObject.id = uuidv4();
+    newBHObject.name = name;
+    newBHObject.tags = tags;
+    newBHObject.hours = hours;
+    return{
+        type: "SAVE_NEW_BH",
+        payload: {
+            bhHours,
+            newBHObject
+        }
+    };
 };

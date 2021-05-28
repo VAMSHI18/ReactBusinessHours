@@ -10,9 +10,8 @@ import {
   saveBH,
   startTimeHandler,
   endTimeHandler,
-  resetHandler
+  resetHandler,
 } from "../../actions";
-
 
 class BHSidepanel extends React.Component {
   bhClickedName = {};
@@ -42,18 +41,22 @@ class BHSidepanel extends React.Component {
   };
 
   resetHandler = (bhHours, bhClicked) => {
-    console.log('reset');
+    console.log("reset");
     this.props.resetHandler(bhHours, bhClicked);
   };
 
   render() {
-    this.bhClickedName = this.props.selectBH.bhClicked
-      ? this.props.selectBH.bhClicked
-      : {};
-    if (!this.bhClickedName.hours) {
-      return <div>Please select business hours on the left</div>;
+    if (!this.props.hours.length) {
+      return <div>Please add new business hours</div>
     }
-
+    else {
+      this.bhClickedName = this.props.selectBH.bhClicked
+        ? this.props.selectBH.bhClicked
+        : {};
+      if (!this.bhClickedName.hours) {
+        return <div>Please select business hours on the left</div>;
+      }
+    }
     this.hours = this.props.hours;
 
     return (
@@ -126,19 +129,21 @@ class BHSidepanel extends React.Component {
           saveBHHandler={() =>
             this.saveBHHandler(this.props.hours, this.bhClickedName)
           }
-          resetHandler={() => this.resetHandler(this.props.hours, this.bhClickedName)}
+          resetHandler={() =>
+            this.resetHandler(this.props.hours, this.bhClickedName)
+          }
         ></SaveButton>
       </div>
     );
   }
-};
+}
 
 const mapStateToProps = (state) => {
   // console.log('state');
   //   console.log(state);
   return {
     selectBH: state.selectBH,
-    hours: state.hours
+    hours: state.hours,
   };
 };
 
@@ -148,5 +153,5 @@ export default connect(mapStateToProps, {
   changeClosedTimeHandler,
   startTimeHandler,
   endTimeHandler,
-  resetHandler
+  resetHandler,
 })(BHSidepanel);

@@ -1,17 +1,23 @@
 import React from "react";
-import {connect} from 'react-redux';
+import { connect } from "react-redux";
 
 import AddNew from "../AddNew/AddNew";
 
 import {
   selectedBH,
   fetchBusinessHours,
-  deleteBusinessHour
-} from '../../actions';
+  deleteBusinessHour,
+  saveNewBH,
+} from "../../actions";
+import { concat } from "lodash";
 
 class BHTable extends React.Component {
   hours = [];
   addNew = null;
+  newBusinessHour = {
+    name: '',
+    tags: []
+  }
 
   //find the selectedRow using this.props.selectBH
 
@@ -26,21 +32,45 @@ class BHTable extends React.Component {
     // console.log(index);
   };
 
+  inputBHNameHandler = (event) => {
+    //console.log(event.target.value);
+    this.newBusinessHour.name = event.target.value;
+  };
+
+  componentDidUpdate() {
+    this.addNew = null;
+  }
+
   addNewBusinessHour = () => {
-    console.log('button clicked!!!');
+    console.log("button clicked!!!");
     this.addNew = (
-      <div>
-        <tr>
-          <td>
-            <input name="bhName" type="text" />
-          </td>
-          <td>
-            <input name="bhName" type="text" />
-          </td>
-        </tr>
-          <button>Save</button>
-          <button>Reset</button>
-      </div>
+      <tr>
+        <td className="ui input">
+          <input
+            name="bhName"
+            type="text"
+            placeholder="Name"
+            onChange={this.inputBHNameHandler}
+          />
+          <div className="margin-top-10">
+            <button
+              className="tiny ui button primary "
+              onClick={() =>
+                this.props.saveNewBH(
+                  this.props.bhHours,
+                  this.newBusinessHour.name
+                )
+              }
+            >
+              Save
+            </button>
+            <button className="tiny ui button">Reset</button>
+          </div>
+        </td>
+        <td className="ui input">
+          <input name="tag" type="text" placeholder="Tag name" />
+        </td>
+      </tr>
     );
     this.setState({});
   };
@@ -97,14 +127,17 @@ class BHTable extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    // console.log('state: ' + JSON.stringify(state));
-    return {
-      bhHours: state.hours,
-      selectBH: state.selectBH,
-      deleteBH: state.deleteBH
-    };
+  // console.log('state: ' + JSON.stringify(state));
+  return {
+    bhHours: state.hours,
+    selectBH: state.selectBH,
+    deleteBH: state.deleteBH,
+  };
 };
 
 export default connect(mapStateToProps, {
-  selectedBH, fetchBusinessHours, deleteBusinessHour
+  selectedBH,
+  fetchBusinessHours,
+  deleteBusinessHour,
+  saveNewBH,
 })(BHTable);
