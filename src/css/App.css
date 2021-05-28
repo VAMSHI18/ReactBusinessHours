@@ -1,0 +1,89 @@
+/* @import '~antd/dist/antd.css'; */
+.fill-height {
+    height: 100%;
+}
+
+.des-heading {
+    border-top-color: #33383D;
+}
+
+.nav>li {
+    position: relative;
+    display: block;
+}
+
+.bg-color {
+    background-color: #33383D !important;
+}
+
+.heading-text-color {
+    color: #98a7b8;
+}
+
+h1.heading {
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 32px;
+}
+
+.flow-container-fluid {
+    padding-right: 60px;
+    padding-left: 60px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 25px;
+}
+
+.table-default {
+    border: 1px solid #e4e9f0;
+}
+
+.table-default>tbody>tr,
+.pointer-cursor {
+    cursor: pointer
+}
+
+.hover tbody tr:hover {
+    background-color: rgba(117, 168, 255, 0.24);
+}
+
+h2.heading {
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 24px;
+}
+
+body {
+    font-family: Roboto, Arial, sans-serif;
+    font-size: 12px;
+    font-style: normal;
+}
+
+.table-default>thead>tr>th,
+.table-default>tbody>tr>td {
+    border: 1px solid #e4e9f0;
+    text-align: center;
+}
+
+.marginBottom10,
+.form-group>button.marginBottom10 {
+    margin-bottom: 10px;
+}
+
+.tableSelected {
+    background-color: rgba(117, 168, 255, 0.24);
+}
+
+.table-default>tbody>tr>td>button.delete-button {
+    width: 20px;
+    height: 25px;
+    padding: 1px;
+}
+
+.pull-right {
+    float: right;
+}
+
+.form-group button.btn-sm {
+    font-size: 11px;
+}
