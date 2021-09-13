@@ -1,41 +1,6 @@
- [{
-         "day": "Sunday",
-         "closed": true,
-         "starttime": "0900",
-         "endtime": "1700"
-     },
-     {
-         "day": "Monday",
-         "starttime": "0900",
-         "endtime": "1700"
-     },
-     {
-         "day": "Tuesday",
-         "starttime": "0900",
-         "endtime": "1700"
-     },
-     {
-         "day": "Wednesday",
-         "starttime": "0900",
-         "endtime": "1700"
-     },
-     {
-         "day": "Thursday",
-         "starttime": "0900",
-         "endtime": "1700"
-     },
-     {
-         "day": "Friday",
-         "starttime": "0900",
-         "endtime": "1700"
-     },
-     {
-         "day": "Saturday",
-         "starttime": "1000",
-         "endtime": "1600"
-     }
- ]
-{"hours": [{
+
+{
+    "hours": [{
     "day": "Sunday",
     "closed": true,
     "starttime": "0900",
