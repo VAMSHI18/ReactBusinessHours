@@ -8,8 +8,8 @@ import {
   fetchBusinessHours,
   deleteBusinessHour,
   saveNewBH,
+  addBusinessHour,
 } from "../../actions";
-import { concat } from "lodash";
 
 class BHTable extends React.Component {
   hours = [];
@@ -19,6 +19,9 @@ class BHTable extends React.Component {
     tags: []
   }
 
+  state = {
+    newName: "",
+  };
   //find the selectedRow using this.props.selectBH
 
   componentDidMount() {
@@ -40,6 +43,17 @@ class BHTable extends React.Component {
   componentDidUpdate() {
     this.addNew = null;
   }
+  addBusinessHour = () => {
+    this.props.addBusinessHour(this.state.newName);
+    this.addNew = null;
+    this.addNewButtons = null;
+    this.setState({});
+  };
+
+  newBHNameHandler = (e) => {
+    console.log(e.target.value);
+    this.setState({ newName: e.target.value });
+  };
 
   addNewBusinessHour = () => {
     console.log("button clicked!!!");
@@ -70,8 +84,33 @@ class BHTable extends React.Component {
         <td className="ui input">
           <input name="tag" type="text" placeholder="Tag name" />
         </td>
+        <td>
+          <input
+            onChange={(e) => this.newBHNameHandler(e)}
+            className="form-control"
+            name="bhName"
+            type="text"
+          />
+        </td>
+        <td>
+          <input className="form-control" name="bhName" type="text" />
+        </td>
       </tr>
     );
+    
+    this.addNewButtons = (
+      <div className="form-group pull-right marginTop10">
+        <button
+          name="saveNew"
+          className="btn btn-primary btn-sm marginRight2"
+          onClick={this.addBusinessHour}
+        >
+          Save
+        </button>
+        <button className="btn btn-secondary btn-sm">Reset</button>
+      </div>
+    );
+
     this.setState({});
   };
 
@@ -100,12 +139,12 @@ class BHTable extends React.Component {
                   }
                 >
                   <td>{hr.name}</td>
-                  <td>{hr.lastmodified}</td>
+                  <td>{}</td>
                   <td>{hr.lastmodified}</td>
                   <td>
                     {hr.action}
                     <button
-                      className="form-control btn btn-danger delete-button"
+                      className=" btn btn-danger delete-button"
                       name="delete"
                       onClick={() => this.props.deleteBusinessHour(hr)}
                     >
@@ -115,10 +154,8 @@ class BHTable extends React.Component {
                 </tr>
               );
             })}
-            {/* <tr> 
-              <td>Hello</td>
-            </tr> */}
             {this.addNew}
+            {this.addNewButtons}
           </tbody>
         </table>
       </div>
@@ -140,4 +177,5 @@ export default connect(mapStateToProps, {
   fetchBusinessHours,
   deleteBusinessHour,
   saveNewBH,
+  selectedBH, fetchBusinessHours, deleteBusinessHour,addBusinessHour
 })(BHTable);

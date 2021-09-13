@@ -66,7 +66,7 @@ body {
 }
 
 .marginBottom10,
-.form-group>button.marginBottom10 {
+.form-group>button.marginBottom10, .form-group {
     margin-bottom: 10px;
 }
 
@@ -93,5 +93,26 @@ body {
 }
 
 .margin-top-10 {
+    margin-top: 10px;
+}
+.form-control {
+    display: block;
+    width: 100%;
+    height: 32px;
+    padding: 4px 12px;
+    font-size: 12px;
+    line-height: 1.66666667;
+    color: #444a52;
+    background-color: #fdfdfd;
+    background-image: none;
+    border: 1px solid #dae1e8;
+    border-radius: 2px;
+}
+
+.marginRight2 {
+    margin-right: 2px;
+}
+
+.marginTop10{
     margin-top: 10px;
 }

@@ -19,6 +19,8 @@ export const bhHours = (state=[], action) => {
             console.log(state);
             // console.log(getState());
             return [...state, action.payload.newBHObject]
+        case 'NEW_BH':
+            return [...state, action.payload];
         default:
             return state;
     }

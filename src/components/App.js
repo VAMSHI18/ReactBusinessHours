@@ -7,30 +7,41 @@ import "antd/dist/antd.css";
 
 import Header from "./Navbar/Navbar";
 import "../css/App.css";
-import BHTable from "./BHTable/BHTable";
 import BHSidepanel from "./BHSidepanel/BHSidepanel";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Applications from "./Applications/Applications";
+import Modules from "./Modules/Modules";
+import Businesshours from "./BusinessHours/BusinessHours";
 
 class App extends React.Component {
   render() {
     return (
       <div>
-        <Header></Header>
+        <BrowserRouter>
+          <Header></Header>
+
         <div style={{ marginLeft: "20px" }} className="flow-container-fluid">
           <div className="fill-height">
-            <div>
-              <h1 className="heading">Business Hours</h1>
-              {/* <div style={{}}>{displayErrorMsg}</div> */}
-              <div className="row">
-                <div className="col-6">
-                  <BHTable></BHTable>
-                </div>
-                <div className="col-6">
-                  <BHSidepanel></BHSidepanel>
-                </div>
-              </div>
+            
+              <Switch>
+                <Route path="/applications" component={Applications}>
+                  {/* <Applications></Applications> */}
+                </Route>
+
+                <Route path="/modules" component={Modules}>
+                  {/* <Modules></Modules> */}
+                </Route>
+
+                <Route Route exact path = "/businesshours"
+                component = {
+                  Businesshours
+                } >
+                  {/* <Businesshours></Businesshours> */}
+                </Route>
+              </Switch>
             </div>
-          </div>
-        </div>
+            </div>
+            </BrowserRouter>
       </div>
     );
   }

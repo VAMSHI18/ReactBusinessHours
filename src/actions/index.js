@@ -36,10 +36,10 @@ export const fetchBusinessHours = () => async (dispatch) => {
 };
 
 export const changeEndTimeHandler = (bhClicked, index) => {
-    console.log('bhClicked');
-    console.log(bhClicked);
+    // console.log('bhClicked');
+    // console.log(bhClicked);
     bhClicked.hours[index].noend = !bhClicked.hours[index].noend;
-    console.log('index: ', index);
+    // console.log('index: ', index);
     return {
         type: 'CHANGE_ENDTIME',
         payload: {
@@ -107,4 +107,11 @@ export const saveNewBH = (bhHours, name, tags=[]) => {
             newBHObject
         }
     };
+};
+export const addBusinessHour = (newName) => {
+    let bhHours = {id: '1234', name: newName, lastmodified: '', tags: [], hours: hours.hours};
+    return {
+        type: 'NEW_BH',
+        payload: bhHours
+    }
 };
